@@ -60,10 +60,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Shuffle puzzle to create a solvable state
         shufflePuzzle();
 
-        // Create buttons and add them to the grid layout
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
                 Button button = new Button(this);
@@ -71,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 button.setText(String.valueOf(puzzle[i][j]));
                 button.setOnClickListener(new PuzzleClickListener(i, j));
                 buttons.add(button);
-                button.setPadding(0, 0, 0, 0); // Remove padding
+                button.setPadding(0, 0, 0, 0);
                 if (puzzle[i][j] == 0) {
-                    button.setBackgroundColor(Color.RED); // Set red color for 0
+                    button.setBackgroundColor(Color.RED);
                 }
                 gridLayout.addView(button);
             }
@@ -149,11 +147,11 @@ public class MainActivity extends AppCompatActivity {
             Button button = buttons.get(i);
             int buttonRow = i / GRID_SIZE;
             int buttonCol = i % GRID_SIZE;
-            button.setText(String.valueOf(puzzle[buttonRow][buttonCol]));
+            button.setText(String.valueOf(puzzle[buttonRow][buttonCol] == 0 ? "" : puzzle[buttonRow][buttonCol]));
             if (puzzle[buttonRow][buttonCol] == 0) {
                 button.setBackgroundColor(Color.RED); // Set red color for 0
             } else {
-                button.setBackgroundColor(Color.WHITE); // Reset color for other buttons
+                button.setBackgroundColor(Color.GREEN); // Reset color for other buttons
             }
         }
     }
